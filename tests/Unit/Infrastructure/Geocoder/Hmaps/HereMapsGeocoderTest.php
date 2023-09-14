@@ -27,11 +27,11 @@ class HereMapsGeocoderTest extends TestCase
                 )
             );
 
-        $geoCoder = new HereMapsGeocoderClient('123', $clientMock);
+        $geocoderClient = new HereMapsGeocoderClient('123', $clientMock);
         $expected = new Coordinates(52.28281, 20.97424);
 
         // When
-        $actual = $geoCoder->geocode(new Address('PL', 'Warsaw', 'Klaudyny', '01-684'));
+        $actual = $geocoderClient->geocode(new Address('PL', 'Warsaw', 'Klaudyny', '01-684'));
 
         // Then
         self::assertEquals($expected, $actual);

@@ -9,13 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class HereMapsGeocoderTest extends KernelTestCase
 {
-    public function test_it_decodes(): void
+    public function test_it_connects_to_actual_service_provider(): void
     {
         self::bootKernel();
-        $geocoder = self::$container->get(HereMapsGeocoderClient::class);
+        $geocoderClient = self::$container->get(HereMapsGeocoderClient::class);
         $expected = new Coordinates(52.28483, 20.97277);
 
-        $actual = $geocoder->geocode(new Address(
+        $actual = $geocoderClient->geocode(new Address(
             'PL',
             'Warsaw',
             'Klaudyny 34',

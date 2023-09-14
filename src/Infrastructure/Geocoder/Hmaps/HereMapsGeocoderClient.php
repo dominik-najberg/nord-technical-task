@@ -21,7 +21,7 @@ class HereMapsGeocoderClient implements GeocoderClient
 
     public function geocode(Address $address): ?Coordinates
     {
-        $request = HereMapsRequestFactory::make($address, $this->apiKey);
+        $request = HereMapsRequestFactory::create($address, $this->apiKey);
         $response = $this->client->sendRequest($request);
 
         $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);

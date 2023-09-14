@@ -26,11 +26,11 @@ class GmapsGeocoderTest extends TestCase
                 )
             );
 
-        $geoCoder = new GmapsGeocoderClient('123', $clientMock);
+        $geocoderClient = new GmapsGeocoderClient('123', $clientMock);
         $expected = new Coordinates(37.4224764, -122.0842499);
 
         // When
-        $actual = $geoCoder->geocode(new Address('US', 'Santa Clara', '1600 Amphitheatre Pkwy', '94043'));
+        $actual = $geocoderClient->geocode(new Address('US', 'Santa Clara', '1600 Amphitheatre Pkwy', '94043'));
 
         // Then
         self::assertEquals($expected, $actual);

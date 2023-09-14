@@ -7,7 +7,7 @@ use GuzzleHttp\Psr7\Request;
 
 class HereMapsRequestFactory
 {
-    public static function make(Address $address, string $apiKey): Request
+    public static function create(Address $address, string $apiKey): Request
     {
         $params = http_build_query([
             'q' => implode(';', [

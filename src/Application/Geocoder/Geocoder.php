@@ -7,9 +7,7 @@ use App\Application\Address\ValueObject\Coordinates;
 
 class Geocoder
 {
-    /**
-     * @var GeocoderClient[]
-     */
+    /** @var GeocoderClient[] */
     private array $geocoders;
 
     public function __construct(array $geocoders)

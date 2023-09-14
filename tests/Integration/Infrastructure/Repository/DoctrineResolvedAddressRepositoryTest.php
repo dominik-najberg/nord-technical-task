@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Unit\Infrastructure\Repository;
+namespace App\Tests\Integration\Infrastructure\Repository;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
@@ -47,7 +47,7 @@ class DoctrineResolvedAddressRepositoryTest extends KernelTestCase
         self::assertEquals($expected->lng(), $actual->lng());
     }
 
-    public function test_it_gets_by_address(): void
+    public function test_it_finds_by_address(): void
     {
         // Given
         $expected    = ResolvedAddressBuilder::new()->build();

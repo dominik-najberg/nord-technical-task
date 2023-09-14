@@ -7,7 +7,7 @@ use GuzzleHttp\Psr7\Request;
 
 class GmapsRequestFactory
 {
-    public static function make(Address $address, string $apiKey): Request
+    public static function create(Address $address, string $apiKey): Request
     {
         $params = http_build_query([
             'address' => $address->street(),

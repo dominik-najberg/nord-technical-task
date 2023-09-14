@@ -11,13 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class GmapsGeocoderTest extends KernelTestCase
 {
-    public function test_it_decodes(): void
+    public function test_it_connects_to_actual_service_provider(): void
     {
         self::bootKernel();
-        $geocoder = self::$container->get(GmapsGeocoderClient::class);
+        $geocoderClient = self::$container->get(GmapsGeocoderClient::class);
         $expected = new Coordinates(52.284786, 20.9727795);
 
-        $actual = $geocoder->geocode(new Address(
+        $actual = $geocoderClient->geocode(new Address(
             'PL',
             'Warsaw',
             'Klaudyny 34',
