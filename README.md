@@ -15,7 +15,7 @@ To make things a bit more challenging, API should support:
 
 It is fully prepared project: 
 * Symfony 5 project with all dependencies already installed
-* Doctrine entity already prepared to be used + repository with two methods required for retrieving and saving (\App\Repository\ResolvedAddressRepository)
+* Doctrine entity already prepared to be used + repository with two methods required for retrieving and saving (\App\Repository\DoctrineResolvedAddressRepository)
 * Already prepared examples how to make geocoding requests to Google Maps and Here maps so you won't need to read documentation how to use those ( \App\Controller\CoordinatesController::gmapsAction and \App\Controller\CoordinatesController::hmapsAction )
 * API endpoint and controller action with DummyGeocoder injected as dependency placeholder.
 
@@ -57,6 +57,6 @@ then go to `http://localhost/coordinates` and it should return
 {"lat":55.90742079144914,"lng":21.135541627577837}
 ```
 
-JSON. If you want to check different address, then add params to url: http://localhost/coordinates?countryCode=lithuania&city=vilnius&street=gedimino+9&postcode=12345 . 
+JSON. If you want to check different address, then add params to url: http://localhost/coordinates?countryCode=LT&city=vilnius&street=gedimino+9&postcode=12345 . 
 
 And that's it, good luck!

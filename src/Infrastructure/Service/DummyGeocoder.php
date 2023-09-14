@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Infrastructure\Service;
 
-use App\ValueObject\Address;
-use App\ValueObject\Coordinates;
+use App\Application\Address\ValueObject\Address;
+use App\Application\Address\ValueObject\Coordinates;
+use App\Application\Geocoder\GeocoderInterface;
 
 class DummyGeocoder implements GeocoderInterface
 {

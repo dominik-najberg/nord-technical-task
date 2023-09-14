@@ -1,0 +1,28 @@
+App\Application\Address\ResolvedAddress:
+  type: entity
+  repositoryClass: App\Infrastructure\Repository\ResolvedAddressRepository
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    countryCode:
+      type: string
+      length: 3
+    city:
+      type: string
+      length: 255
+    street:
+      type: string
+      length: 255
+    postcode:
+      type: string
+      length: 16
+    lat:
+      type: string
+      length: 32
+      nullable: true
+    lng:
+      type: string
+      length: 32
+      nullable: true
