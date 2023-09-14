@@ -6,21 +6,21 @@ namespace App\Application\Address\ValueObject;
 
 class Coordinates
 {
-    private float $lat;
-    private float $lng;
+    private string $lat;
+    private string $lng;
 
-    public function __construct(float $lat, float $lng)
+    public function __construct(string $lat, string $lng)
     {
         $this->lat = $lat;
         $this->lng = $lng;
     }
 
-    public function lat(): float
+    public function lat(): string
     {
         return $this->lat;
     }
 
-    public function lng(): float
+    public function lng(): string
     {
         return $this->lng;
     }

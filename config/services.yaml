@@ -38,6 +38,11 @@ services:
             $apiKey: '%env(GOOGLE_GEOCODING_API_KEY)%'
             $client: '@Psr\Http\Client\ClientInterface'
 
+    App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoder:
+        arguments:
+            $apiKey: '%env(HEREMAPS_GEOCODING_API_KEY)%'
+            $client: '@Psr\Http\Client\ClientInterface'
+
     App\Ui\Http\GmapsCoordinatesController:
         arguments:
             $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder'

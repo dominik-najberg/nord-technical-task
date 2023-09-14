@@ -26,19 +26,18 @@ class GmapsGeocoder implements GeocoderInterface
 
         $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
-        if (count($data['results']) === 0) {
+        $firstResult = $data['results'][0] ?? null;
+        if (null === $firstResult) {
             return null;
         }
-
-        $firstResult = $data['results'][0];
 
         if ($firstResult['geometry']['location_type'] !== 'ROOFTOP') {
             return null;
         }
 
         return new Coordinates(
-            (float) $firstResult['geometry']['location']['lat'],
-            (float) $firstResult['geometry']['location']['lng'],
+            (string) $firstResult['geometry']['location']['lat'],
+            (string) $firstResult['geometry']['location']['lng'],
         );
     }
 }

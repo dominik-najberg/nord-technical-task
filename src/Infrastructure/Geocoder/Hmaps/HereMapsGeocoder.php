@@ -26,19 +26,15 @@ class HereMapsGeocoder implements GeocoderInterface
 
         $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
-        if (count($data['results']) === 0) {
-            return null;
-        }
+        $firstResult = $data['items'][0] ?? null;
 
-        $firstResult = $data['results'][0];
-
-        if ($firstResult['geometry']['location_type'] !== 'ROOFTOP') {
+        if (null === $firstResult) {
             return null;
         }
 
         return new Coordinates(
-            (float) $firstResult['geometry']['location']['lat'],
-            (float) $firstResult['geometry']['location']['lng'],
+            (string) $firstResult['position']['lat'],
+            (string) $firstResult['position']['lng'],
         );
     }
 }
