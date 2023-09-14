@@ -15,7 +15,7 @@ class GmapsGeocoderTest extends KernelTestCase
     {
         self::bootKernel();
         $geocoder = self::$container->get(GmapsGeocoderClient::class);
-        $expected = new Coordinates('52.284786','20.9727795');
+        $expected = new Coordinates(52.284786, 20.9727795);
 
         $actual = $geocoder->geocode(new Address(
             'PL',

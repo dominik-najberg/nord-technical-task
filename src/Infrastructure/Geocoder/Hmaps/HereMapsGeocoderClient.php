@@ -33,8 +33,8 @@ class HereMapsGeocoderClient implements GeocoderClient
         }
 
         return new Coordinates(
-            (string) $firstResult['position']['lat'],
-            (string) $firstResult['position']['lng'],
+            (float) $firstResult['position']['lat'],
+            (float) $firstResult['position']['lng'],
         );
     }
 }

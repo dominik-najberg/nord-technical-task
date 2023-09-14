@@ -33,24 +33,24 @@ services:
     GuzzleHttp\Client: ~
     Psr\Http\Client\ClientInterface: '@GuzzleHttp\Client'
 
-    App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder:
+    App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient:
         arguments:
             $apiKey: '%env(GOOGLE_GEOCODING_API_KEY)%'
             $client: '@Psr\Http\Client\ClientInterface'
 
-    App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoder:
+    App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoderClient:
         arguments:
             $apiKey: '%env(HEREMAPS_GEOCODING_API_KEY)%'
             $client: '@Psr\Http\Client\ClientInterface'
 
     App\Ui\Http\GmapsCoordinatesController:
         arguments:
-            $geocoder: '@GmapsGeocoderClient'
+            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient'
 
     App\Ui\Http\HereMapsCoordinatesController:
         arguments:
-            $geocoder: '@HereMapsGeocoderClient'
+            $geocoder: '@App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoderClient'
 
     App\Ui\Http\CoordinatesController:
         arguments:
-            $geocoder: '@GmapsGeocoderClient'
+            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient'

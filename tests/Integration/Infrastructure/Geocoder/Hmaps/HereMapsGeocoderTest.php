@@ -13,7 +13,7 @@ class HereMapsGeocoderTest extends KernelTestCase
     {
         self::bootKernel();
         $geocoder = self::$container->get(HereMapsGeocoderClient::class);
-        $expected = new Coordinates('52.28483','20.97277');
+        $expected = new Coordinates(52.28483, 20.97277);
 
         $actual = $geocoder->geocode(new Address(
             'PL',

@@ -36,8 +36,8 @@ class GmapsGeocoderClient implements GeocoderClient
         }
 
         return new Coordinates(
-            (string) $firstResult['geometry']['location']['lat'],
-            (string) $firstResult['geometry']['location']['lng'],
+            (float) $firstResult['geometry']['location']['lat'],
+            (float) $firstResult['geometry']['location']['lng'],
         );
     }
 }
