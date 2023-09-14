@@ -4,7 +4,7 @@ namespace App\Tests\Unit\Infrastructure\Geocoder\Gmaps;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
-use App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder;
+use App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient;
 use Psr\Http\Client\ClientInterface;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
@@ -26,7 +26,7 @@ class GmapsGeocoderTest extends TestCase
                 )
             );
 
-        $geoCoder = new GmapsGeocoder('123', $clientMock);
+        $geoCoder = new GmapsGeocoderClient('123', $clientMock);
         $expected = new Coordinates(37.4224764, -122.0842499);
 
         // When

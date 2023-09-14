@@ -45,12 +45,12 @@ services:
 
     App\Ui\Http\GmapsCoordinatesController:
         arguments:
-            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder'
+            $geocoder: '@GmapsGeocoderClient'
 
     App\Ui\Http\HereMapsCoordinatesController:
         arguments:
-            $geocoder: '@App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoder'
+            $geocoder: '@HereMapsGeocoderClient'
 
     App\Ui\Http\CoordinatesController:
         arguments:
-            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder'
+            $geocoder: '@GmapsGeocoderClient'

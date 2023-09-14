@@ -4,11 +4,11 @@ namespace App\Infrastructure\Geocoder\Hmaps;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
-use App\Application\Geocoder\GeocoderInterface;
+use App\Application\Geocoder\GeocoderClient;
 use App\Infrastructure\Geocoder\Gmaps\GmapsRequestFactory;
 use Psr\Http\Client\ClientInterface;
 
-class HereMapsGeocoder implements GeocoderInterface
+class HereMapsGeocoderClient implements GeocoderClient
 {
     private string $apiKey;
     private ClientInterface $client;

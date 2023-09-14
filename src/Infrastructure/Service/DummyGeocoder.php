@@ -6,9 +6,9 @@ namespace App\Infrastructure\Service;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
-use App\Application\Geocoder\GeocoderInterface;
+use App\Application\Geocoder\GeocoderClient;
 
-class DummyGeocoder implements GeocoderInterface
+class DummyGeocoder implements GeocoderClient
 {
     public function geocode(Address $address): ?Coordinates
     {

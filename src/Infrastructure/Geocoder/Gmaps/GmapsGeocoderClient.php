@@ -4,11 +4,11 @@ namespace App\Infrastructure\Geocoder\Gmaps;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
-use App\Application\Geocoder\GeocoderInterface;
+use App\Application\Geocoder\GeocoderClient;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Client\ClientInterface;
 
-class GmapsGeocoder implements GeocoderInterface
+class GmapsGeocoderClient implements GeocoderClient
 {
     private string $apiKey;
     private ClientInterface $client;

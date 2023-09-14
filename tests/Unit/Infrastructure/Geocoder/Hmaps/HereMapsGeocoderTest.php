@@ -4,8 +4,8 @@ namespace App\Tests\Unit\Infrastructure\Geocoder\Hmaps;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
-use App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder;
-use App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoder;
+use App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient;
+use App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoderClient;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -27,7 +27,7 @@ class HereMapsGeocoderTest extends TestCase
                 )
             );
 
-        $geoCoder = new HereMapsGeocoder('123', $clientMock);
+        $geoCoder = new HereMapsGeocoderClient('123', $clientMock);
         $expected = new Coordinates('52.28281', '20.97424');
 
         // When
