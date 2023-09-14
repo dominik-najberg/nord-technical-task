@@ -13,7 +13,12 @@ class ResolvedAddress
     private ?string $lng;
 
     public function __construct(
-        $countryCode, $city, $street, $postcode, $lat, $lng)
+        $countryCode,
+        $city,
+        $street,
+        $postcode,
+        $lat,
+        $lng)
     {
         $this->countryCode = $countryCode;
         $this->city        = $city;

@@ -15,6 +15,7 @@
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
     </php>
 
     <testsuites>
@@ -35,7 +36,4 @@
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
-
-    <extensions>
-    </extensions>
 </phpunit>
