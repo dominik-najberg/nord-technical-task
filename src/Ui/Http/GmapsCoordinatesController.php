@@ -25,11 +25,6 @@ class GmapsCoordinatesController extends AbstractController
         $this->geocoder = $geocoder->createGmapsGeocoder();
     }
 
-    /**
-     * @Route(path="/gmaps", name="gmaps")
-     * @param Request $request
-     * @return Response
-     */
     public function __invoke(Request $request): Response
     {
         $country = $request->get('country', 'lithuania');

@@ -25,7 +25,6 @@ class HereMapsCoordinatesController extends AbstractController
         $this->geocoder = $geocoder->createHereMapsGeocoder();
     }
 
-
     public function __invoke(Request $request): Response
     {
         $country = $request->get('country', 'lithuania');
