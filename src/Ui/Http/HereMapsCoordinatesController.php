@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Ui\Http;
 
 use App\Application\Address\ValueObject\Address;
+use App\Application\Geocoder\Geocoder;
 use App\Application\Geocoder\GeocoderClient;
+use App\Application\Geocoder\GeocoderFactory;
 use App\Infrastructure\Repository\DoctrineResolvedAddressRepository;
 use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,12 +18,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HereMapsCoordinatesController extends AbstractController
 {
-    private GeocoderClient $geocoder;
+    private Geocoder $geocoder;
 
-    public function __construct(GeocoderClient $geocoder)
+    public function __construct(GeocoderFactory $geocoder)
     {
-        $this->geocoder = $geocoder;
+        $this->geocoder = $geocoder->createHereMapsGeocoder();
     }
+
 
     public function __invoke(Request $request): Response
     {

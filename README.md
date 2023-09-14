@@ -17,7 +17,7 @@ It is fully prepared project:
 * Symfony 5 project with all dependencies already installed
 * Doctrine entity already prepared to be used + repository with two methods required for retrieving and saving (\App\Repository\DoctrineResolvedAddressRepository)
 * Already prepared examples how to make geocoding requests to Google Maps and Here maps so you won't need to read documentation how to use those ( \App\Controller\CoordinatesController::gmapsAction and \App\Controller\CoordinatesController::hmapsAction )
-* API endpoint and controller action with DummyGeocoder injected as dependency placeholder.
+* API endpoint and controller action with DummyGeocoderClient injected as dependency placeholder.
 
 ## What is expected from you
 

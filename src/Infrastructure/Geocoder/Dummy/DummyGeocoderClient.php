@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Service;
+namespace App\Infrastructure\Geocoder\Dummy;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
 use App\Application\Geocoder\GeocoderClient;
 
-class DummyGeocoder implements GeocoderClient
+class DummyGeocoderClient implements GeocoderClient
 {
     public function geocode(Address $address): ?Coordinates
     {
