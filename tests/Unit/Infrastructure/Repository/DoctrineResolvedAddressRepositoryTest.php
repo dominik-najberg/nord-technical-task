@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Integration\Infrastructure\Repository;
+namespace App\Tests\Unit\Infrastructure\Repository;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
@@ -65,7 +65,7 @@ class DoctrineResolvedAddressRepositoryTest extends KernelTestCase
         $entityManager->clear();
 
         // Then
-        $actual = $this->doctrineResolvedAddressRepository->getByAddress($address);
+        $actual = $this->doctrineResolvedAddressRepository->findByAddress($address);
         self::assertEquals($expected->countryCode(), $actual->countryCode());
         self::assertEquals($expected->city(), $actual->city());
         self::assertEquals($expected->street(), $actual->street());

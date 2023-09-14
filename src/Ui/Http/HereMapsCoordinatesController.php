@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CoordinatesController extends AbstractController
+class HereMapsCoordinatesController extends AbstractController
 {
     private GeocoderInterface $geocoder;
 
@@ -23,9 +23,9 @@ class CoordinatesController extends AbstractController
         $this->geocoder = $geocoder;
     }
 
-    public function __invoke(Request $request, DoctrineResolvedAddressRepository $repository): Response
+    public function __invoke(Request $request): Response
     {
-        $country = $request->get('country', 'LT');
+        $country = $request->get('country', 'lithuania');
         $city = $request->get('city', 'vilnius');
         $street = $request->get('street', 'jasinskio 16');
         $postcode = $request->get('postcode', '01112');

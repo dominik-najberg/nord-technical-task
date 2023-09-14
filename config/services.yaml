@@ -29,3 +29,23 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    GuzzleHttp\Client: ~
+    Psr\Http\Client\ClientInterface: '@GuzzleHttp\Client'
+
+    App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder:
+        arguments:
+            $apiKey: '%env(GOOGLE_GEOCODING_API_KEY)%'
+            $client: '@Psr\Http\Client\ClientInterface'
+
+    App\Ui\Http\GmapsCoordinatesController:
+        arguments:
+            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder'
+
+    App\Ui\Http\HereMapsCoordinatesController:
+        arguments:
+            $geocoder: '@App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoder'
+
+    App\Ui\Http\CoordinatesController:
+        arguments:
+            $geocoder: '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoder'

@@ -1,3 +1,14 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+gmaps:
+  path: /gmaps
+  controller: App\Ui\Http\GmapsCoordinatesController
+  methods: ['GET']
+
+hmaps:
+  path: /hmaps
+  controller: App\Ui\Http\HereMapsCoordinatesController
+  methods: ['GET']
+
+geocode:
+  path: /coordinates
+  controller: App\Ui\Http\CoordinatesController
+  methods: ['GET']

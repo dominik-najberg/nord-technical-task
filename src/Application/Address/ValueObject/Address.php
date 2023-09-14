@@ -19,22 +19,22 @@ class Address
         $this->postcode = $postcode;
     }
 
-    public function getCountry(): string
+    public function country(): string
     {
         return $this->country;
     }
 
-    public function getCity(): string
+    public function city(): string
     {
         return $this->city;
     }
 
-    public function getStreet(): string
+    public function street(): string
     {
         return $this->street;
     }
 
-    public function getPostcode(): string
+    public function postcode(): string
     {
         return $this->postcode;
     }

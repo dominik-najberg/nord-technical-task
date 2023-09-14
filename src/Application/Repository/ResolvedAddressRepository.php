@@ -8,6 +8,6 @@ use App\Application\Address\ValueObject\Coordinates;
 
 interface ResolvedAddressRepository
 {
-    public function getByAddress(Address $address): ResolvedAddress;
+    public function findByAddress(Address $address): ?ResolvedAddress;
     public function saveResolvedAddress(Address $address, ?Coordinates $coordinates): ResolvedAddress;
 }

@@ -24,31 +24,25 @@ class DoctrineResolvedAddressRepository extends ServiceEntityRepository implemen
         parent::__construct($registry, ResolvedAddress::class);
     }
 
-    public function getByAddress(Address $address): ResolvedAddress
+    public function findByAddress(Address $address): ?ResolvedAddress
     {
-        $resolvedAddress = $this->findOneBy([
-            'countryCode' => $address->getCountry(),
-            'city' => $address->getCity(),
-            'street' => $address->getStreet(),
-            'postcode' => $address->getPostcode()
+        return $this->findOneBy([
+            'countryCode' => $address->country(),
+            'city' => $address->city(),
+            'street' => $address->street(),
+            'postcode' => $address->postcode()
         ]);
-
-        if (null === $resolvedAddress) {
-            throw new EntityNotFoundException();
-        }
-
-        return $resolvedAddress;
     }
 
     public function saveResolvedAddress(Address $address, ?Coordinates $coordinates): ResolvedAddress
     {
         $resolvedAddress = new ResolvedAddress(
-            $address->getCountry(),
-            $address->getCity(),
-            $address->getStreet(),
-            $address->getPostcode(),
-            $coordinates ? $coordinates->getLat() : null,
-            $coordinates ? $coordinates->getLng() : null,
+            $address->country(),
+            $address->city(),
+            $address->street(),
+            $address->postcode(),
+            $coordinates ? $coordinates->lat() : null,
+            $coordinates ? $coordinates->lng() : null,
         );
 
         $this->getEntityManager()->persist($resolvedAddress);

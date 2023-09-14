@@ -15,12 +15,12 @@ class Coordinates
         $this->lng = $lng;
     }
 
-    public function getLat(): float
+    public function lat(): float
     {
         return $this->lat;
     }
 
-    public function getLng(): float
+    public function lng(): float
     {
         return $this->lng;
     }
