@@ -12,6 +12,7 @@ class HereMapsGeocoderClient implements GeocoderClient
 {
     private string $apiKey;
     private ClientInterface $client;
+    private bool $cacheHit = false;
 
     public function __construct(string $apiKey, ClientInterface $client)
     {
@@ -36,5 +37,10 @@ class HereMapsGeocoderClient implements GeocoderClient
             (float) $firstResult['position']['lat'],
             (float) $firstResult['position']['lng'],
         );
+    }
+
+    public function isCacheHit(): bool
+    {
+        return $this->cacheHit;
     }
 }

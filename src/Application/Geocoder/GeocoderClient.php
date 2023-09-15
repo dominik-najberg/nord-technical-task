@@ -10,4 +10,5 @@ use App\Application\Address\ValueObject\Coordinates;
 interface GeocoderClient
 {
     public function geocode(Address $address): ?Coordinates;
+    public function isCacheHit(): bool;
 }

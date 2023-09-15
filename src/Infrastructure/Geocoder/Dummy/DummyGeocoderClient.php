@@ -10,8 +10,15 @@ use App\Application\Geocoder\GeocoderClient;
 
 class DummyGeocoderClient implements GeocoderClient
 {
+    private bool $cacheHit = false;
+
     public function geocode(Address $address): ?Coordinates
     {
         return new Coordinates(55.90742079144914, 21.135541627577837);
+    }
+
+    public function isCacheHit(): bool
+    {
+        return $this->cacheHit;
     }
 }

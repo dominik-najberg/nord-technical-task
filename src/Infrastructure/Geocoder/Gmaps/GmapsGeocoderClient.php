@@ -10,6 +10,7 @@ use Psr\Http\Client\ClientInterface;
 
 class GmapsGeocoderClient implements GeocoderClient
 {
+    private bool $cacheHit = false;
     private string $apiKey;
     private ClientInterface $client;
 
@@ -39,5 +40,10 @@ class GmapsGeocoderClient implements GeocoderClient
             (float) $firstResult['geometry']['location']['lat'],
             (float) $firstResult['geometry']['location']['lng'],
         );
+    }
+
+    public function isCacheHit(): bool
+    {
+        return $this->cacheHit;
     }
 }

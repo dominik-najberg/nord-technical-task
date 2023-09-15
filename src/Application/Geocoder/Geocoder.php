@@ -24,7 +24,10 @@ class Geocoder
         foreach ($this->geocoders as $geocoder) {
             $coordinates = $geocoder->geocode($address);
             if (null !== $coordinates) {
-                $this->resolvedAddressRepository->saveResolvedAddress($address, $coordinates);
+                if (false === $geocoder->isCacheHit()) {
+                    $this->resolvedAddressRepository->saveResolvedAddress($address, $coordinates);
+
+                }
 
                 return $coordinates;
             }

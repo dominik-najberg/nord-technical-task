@@ -9,6 +9,7 @@ use App\Application\Repository\ResolvedAddressRepository;
 
 class DoctrineCacheGeocoderClient implements GeocoderClient
 {
+    private bool $cacheHit = true;
     private ResolvedAddressRepository $resolvedAddressRepository;
 
     public function __construct(ResolvedAddressRepository $resolvedAddressRepository)
@@ -28,5 +29,10 @@ class DoctrineCacheGeocoderClient implements GeocoderClient
         }
 
         return null;
+    }
+
+    public function isCacheHit(): bool
+    {
+        return $this->cacheHit;
     }
 }

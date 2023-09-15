@@ -7,6 +7,8 @@ use GuzzleHttp\Psr7\Request;
 
 class GmapsRequestFactory
 {
+    private bool $cacheHit = false;
+
     public static function create(Address $address, string $apiKey): Request
     {
         $params = http_build_query([
@@ -22,5 +24,10 @@ class GmapsRequestFactory
         $uri = 'https://maps.googleapis.com/maps/api/geocode/json?' . $params;
 
         return new Request('GET', $uri);
+    }
+
+    public function isCacheHit(): bool
+    {
+        return $this->cacheHit;
     }
 }
