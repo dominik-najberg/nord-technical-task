@@ -2,11 +2,9 @@
 
 namespace App\Application\Geocoder;
 
-use App\Application\Address\ResolvedAddress;
 use App\Application\Address\ValueObject\Address;
 use App\Application\Address\ValueObject\Coordinates;
 use App\Application\Repository\ResolvedAddressRepository;
-use App\Infrastructure\Repository\DoctrineResolvedAddressRepository;
 
 class Geocoder
 {

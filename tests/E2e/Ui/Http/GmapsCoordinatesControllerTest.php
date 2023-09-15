@@ -2,23 +2,40 @@
 
 namespace App\Tests\E2e\Ui\Http;
 
+use App\Application\Address\ResolvedAddress;
+use App\Application\Address\ValueObject\Address;
+use App\Application\Repository\ResolvedAddressRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-// The same kind of test for the rest of the controllers
 class GmapsCoordinatesControllerTest extends WebTestCase
 {
+    public const COUNTRY = 'PL';
+    public const CITY = 'Warsaw';
+    public const STREET = 'Klaudyny 34';
+    public const POSTCODE = '01-684';
+
     public function test_it_geocodes_google_maps(): void
     {
         $client = static::createClient();
+        /** @var ResolvedAddressRepository $repository */
+        $repository = $client->getContainer()->get('doctrine')->getManager()->getRepository(ResolvedAddress::class);
+        $expected = new ResolvedAddress(
+            self::COUNTRY,
+            self::CITY,
+            self::STREET,
+            self::POSTCODE,
+            52.284786,
+            20.9727795
+        );
 
         $client->request(
             'GET',
-            '/gmaps', // Replace this with your actual route, if different
+            '/gmaps',
             [
-                'country' => 'PL',
-                'city' => 'Warsaw',
-                'street' => 'Klaudyny 34',
-                'postcode' => '01-684',
+                'country' => self::COUNTRY,
+                'city' => self::CITY,
+                'street' => self::STREET,
+                'postcode' => self::POSTCODE,
             ]
         );
 
@@ -31,5 +48,17 @@ class GmapsCoordinatesControllerTest extends WebTestCase
             'lat' => 52.284786,
             'lng' => 20.9727795
         ], $responseArray);
+
+        $actual = $repository->findByAddress(
+            new Address(self::COUNTRY, self::CITY, self::STREET, self::POSTCODE)
+        );
+
+        self::assertInstanceOf(ResolvedAddress::class, $actual);
+        self::assertEquals($expected->countryCode(), $actual->countryCode());
+        self::assertEquals($expected->city(), $actual->city());
+        self::assertEquals($expected->street(), $actual->street());
+        self::assertEquals($expected->postcode(), $actual->postcode());
+        self::assertEquals($expected->lat(), $actual->lat());
+        self::assertEquals($expected->lng(), $actual->lng());
     }
 }
