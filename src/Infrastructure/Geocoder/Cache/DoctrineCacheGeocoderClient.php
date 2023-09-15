@@ -18,6 +18,15 @@ class DoctrineCacheGeocoderClient implements GeocoderClient
 
     public function geocode(Address $address): ?Coordinates
     {
-        return $this->resolvedAddressRepository->findByAddress($address);
+        $resolvedAddress = $this->resolvedAddressRepository->findByAddress($address);
+
+        if (null !== $resolvedAddress) {
+            return new Coordinates(
+                (float) $resolvedAddress->lat(),
+                (float) $resolvedAddress->lng()
+            );
+        }
+
+        return null;
     }
 }
