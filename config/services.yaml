@@ -24,7 +24,7 @@ services:
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Ui\Http\:
-        resource: '../src/Ui/Http/'
+        resource: '../src/Ui/Http/*Controller.php'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
@@ -44,6 +44,7 @@ services:
             $client: '@Psr\Http\Client\ClientInterface'
 
     App\Ui\Http\GmapsCoordinatesController:
+        public: true
         arguments:
             $geocoder: !service
                 class: App\Application\Geocoder\Geocoder
@@ -52,6 +53,7 @@ services:
                     $resolvedAddressRepository: '@App\Application\Repository\ResolvedAddressRepository'
 
     App\Ui\Http\HereMapsCoordinatesController:
+        public: true
         arguments:
             $geocoder: !service
                 class: App\Application\Geocoder\Geocoder
@@ -60,6 +62,7 @@ services:
                     $resolvedAddressRepository: '@App\Application\Repository\ResolvedAddressRepository'
 
     App\Ui\Http\CoordinatesController:
+        public: true
         arguments:
             $geocoder: !service
                 class: App\Application\Geocoder\Geocoder

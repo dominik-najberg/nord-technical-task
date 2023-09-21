@@ -6,12 +6,11 @@ namespace App\Ui\Http;
 
 use App\Application\Address\ValueObject\Address;
 use App\Application\Geocoder\Geocoder;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CoordinatesController extends AbstractController
+class CoordinatesController
 {
     private Geocoder $geocoder;
 
