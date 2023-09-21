@@ -45,12 +45,24 @@ services:
 
     App\Ui\Http\GmapsCoordinatesController:
         arguments:
-            $geocoder: '@App\Application\Geocoder\GeocoderFactory'
+            $geocoder: !service
+                class: App\Application\Geocoder\Geocoder
+                arguments:
+                    $geocoders: ['@App\Infrastructure\Geocoder\Cache\DoctrineCacheGeocoderClient', '@App\Infrastructure\Geocoder\Gmaps\GmapsGeocoderClient']
+                    $resolvedAddressRepository: '@App\Application\Repository\ResolvedAddressRepository'
 
     App\Ui\Http\HereMapsCoordinatesController:
         arguments:
-            $geocoder: '@App\Application\Geocoder\GeocoderFactory'
+            $geocoder: !service
+                class: App\Application\Geocoder\Geocoder
+                arguments:
+                    $geocoders: ['@App\Infrastructure\Geocoder\Cache\DoctrineCacheGeocoderClient', '@App\Infrastructure\Geocoder\Hmaps\HereMapsGeocoderClient']
+                    $resolvedAddressRepository: '@App\Application\Repository\ResolvedAddressRepository'
 
     App\Ui\Http\CoordinatesController:
         arguments:
-            $geocoder: '@App\Application\Geocoder\GeocoderFactory'
+            $geocoder: !service
+                class: App\Application\Geocoder\Geocoder
+                arguments:
+                    $geocoders: ['@App\Infrastructure\Geocoder\Cache\DoctrineCacheGeocoderClient', '@App\Infrastructure\Geocoder\Dummy\DummyGeocoderClient']
+                    $resolvedAddressRepository: '@App\Application\Repository\ResolvedAddressRepository'
