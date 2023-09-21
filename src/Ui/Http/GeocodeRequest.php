@@ -8,11 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class GeocodeRequest
 {
     public string $country;
-
     public string $city;
-
     public string $street;
-
     public string $postcode;
 
     private function __construct(string $country, string $city, string $street, string $postcode)
