@@ -22,13 +22,15 @@ class CoordinatesController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
-        $country = $request->get('country', 'LT');
-        $city = $request->get('city', 'vilnius');
-        $street = $request->get('street', 'jasinskio 16');
-        $postcode = $request->get('postcode', '01112');
+        $geocodeRequest = GeocodeRequest::fromRequest($request);
 
         $coordinates = $this->geocoder->geocode(
-            new Address($country, $city, $street, $postcode)
+            new Address(
+                $geocodeRequest->country,
+                $geocodeRequest->city,
+                $geocodeRequest->street,
+                $geocodeRequest->postcode
+            )
         );
 
         if (null === $coordinates) {
